@@ -1,0 +1,19 @@
+# SCsub
+
+Import('env')
+
+sources = [
+    "register_types.cpp",
+    "pathfinder.cpp",
+    "gridded_graph.cpp",
+    "pathfinding/graph.cpp",
+    "pathfinding/search.cpp"
+]
+
+module_env = env.Clone()
+module_env.Append(CCFLAGS=['-O2'])
+module_env.Append(CXXFLAGS=['-std=c++17', '-Wsign-compare'])
+module_env.Append(CPPPATH=['../'])
+
+# Static compilation
+module_env.add_source_files(env.modules_sources, sources)
